@@ -15,6 +15,54 @@ For building and running the application you need:
 - Maven: [Version 3](https://maven.apache.org)
 
 ## Running the application locally
+### Things need to complete before run the application:
+1. Download [Smtp4dev](https://github.com/rnwood/smtp4dev/releases/tag/3.6.1)
+2. Create PostgresDB and then run the sql script in `src/resources` folder
+3. Adding informations in 2 properties files with this format (replace ... with your custom configurations):
+```shell
+spring.application.name=tutorial-rest-java-spring
+
+
+spring.datasource.url=...
+spring.datasource.username=...
+spring.datasource.password=...
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+#Encryption
+encryption.salt.rounds=10
+
+#Token
+jwt.algorithm.key=...
+jwt.issuer=...
+jwt.expiryInSeconds=...
+
+#Dev Email
+email.from=samplemail@gmail.com
+
+#FrontEnd URL
+app.frontend.url=http.//ecommerce.com
+
+
+#SMTP
+spring.mail.host=localhost
+spring.mail.port=25
+#spring.mail.username=
+#spring.mail.password=
+#spring.properties.mail.smtp.auth=true
+#spring.properties.mail.smtp.starttls.enable=true
+
+```
+```shell
+spring.jpa.defer-datasource-initialization=true
+spring.datasource.url=jdbc:h2:mem:test
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+
+spring.mail.port=3025
+spring.mail.username=springboot
+spring.mail.password=secret
+```
 
 ### There are several ways to run a Spring Boot application on your local machine. Below is 2 suggestions:
 1. Using IntelliJ IDEA
